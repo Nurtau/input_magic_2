@@ -1,6 +1,17 @@
 const input = document.querySelector("input");
 const container = document.querySelector(".container");
 
+
+window.addEventListener("load", (event) => {
+    if (localStorage.getItem("word") === null) {
+        localStorage.setItem("word", "");
+    } else {
+        input.value = localStorage.getItem("word");
+        change(event);
+    }
+})
+
+
 input.addEventListener("input", change);
 
 function change(event) {
@@ -15,6 +26,7 @@ function change(event) {
         value = newValue;
         input.value = value;
     }
+    localStorage.setItem("word", value);
     if (value !== "") {
         for (let char of value) { //recreating all elements
             const newItem = document.createElement("p");
