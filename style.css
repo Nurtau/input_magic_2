@@ -44,4 +44,5 @@ input {
     border-radius: 10px;
     text-align: center;
     box-shadow: 0.5px 0.5px 1px #276678;
+    outline: none;
 }
