@@ -14,6 +14,14 @@ window.addEventListener("load", (event) => {
 
 input.addEventListener("input", change);
 
+container.addEventListener("click", (event) => { //event delegation
+    if (event.target.classList.contains("item")) {
+        container.removeChild(event.target);
+        change(event);
+    }
+}); 
+
+
 function change(event) {
     let value = input.value;
     newValue = ""
@@ -32,10 +40,6 @@ function change(event) {
             const newItem = document.createElement("p");
             newItem.innerText = char;
             newItem.classList.add("item");
-            newItem.addEventListener("click", (event) => {
-                container.removeChild(event.target);
-                change(event);
-            })
             container.appendChild(newItem);
         }
     } else {
